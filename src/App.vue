@@ -1,14 +1,12 @@
 <template>
-        <PianoContainer/>
+    <PianoContainer/>
 </template>
 
 <script>
-import PianoContainer from "@/components/PianoContainer";
+    import PianoContainer from "@/components/PianoContainer";
     export default {
         name: 'App',
-        components: {
-            PianoContainer
-        }
+        components: {PianoContainer},
     }
 </script>
 

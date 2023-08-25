@@ -1,24 +1,19 @@
 <template>
-    <table class="piano-container" >
-        <tr>
-            <td
-                v-for="key of keys"
-                :key="key.id"
-                :class="{'white-td': !key.name.includes('b'), 'black-td': key.name.includes('b')}"
-            >
+    <ul class="piano-container" >
+
 
                 <KeyItem
+                    v-for="key of keys"
+                    :key="key.id"
+                    :class="{'white-td': !key.name.includes('b'), 'black-td': key.name.includes('b')}"
                     :key-name="key.name"
                     :note="key.name"
-                    :class="key.keyCode"
                     :key-code="key.keyCode"
                     :src="key.src"
                     @mousedown="play(key.src)"
                     ref="keyitem"
                 />
-            </td>
-        </tr>
-    </table>
+    </ul>
 </template>
 
 <script>
@@ -139,18 +134,14 @@ export default {
 
 <style scoped>
 .piano-container {
+    position: relative;
     margin: 0 auto;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-collapse: collapse;
-    position: relative;
     overflow: hidden;
+    list-style: none;
 }
-td {
-    border: 1px solid #000;
-}
-.black-td {
-    border: none;
-    width: 0;
-}
+
 </style>

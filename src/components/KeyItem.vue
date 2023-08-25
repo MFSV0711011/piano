@@ -1,10 +1,10 @@
 <template>
-    <div
+    <li
         :class="{'white-key': !src.includes('b'), 'black-key': src.includes('b')}"
         class="key"
     >
         <span style="margin-bottom: 1rem;"> {{ keyName }} </span>
-    </div>
+    </li>
 </template>
 
 <script>
@@ -44,23 +44,30 @@ export default {
     cursor: pointer;
 }
 
-.key:active, .key.active {
-    background: lime;
-}
 .white-key {
+    position: relative;
     width: 1.9rem;
     height: 10rem;
-    background: #fff;
-
+    background: linear-gradient(#fff 97%, #ddd 3%);
+    border-radius: 0 0 5px 5px;
+    border: 1px solid #000;
+}
+.white-key:active, .white-key.active {
+    background: #ddd;
+}
+.white-key:not(:first-child) {
 }
 .black-key {
-    position: absolute;
-    background: #000;
+    border: 1px solid #000;
+    background: linear-gradient(#000000, #333333);
     height: 7rem;
     color: white;
-    top: -1px;
+    margin: -3rem -.7rem 0 -.7rem;
+    z-index: 1;
 }
-.black-key:nth-child(1n) {
-    margin-left: -.8rem;
+
+.black-key:active, .black-key.active{
+    background: linear-gradient(#333, #000);
 }
+
 </style>
