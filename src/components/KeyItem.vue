@@ -34,6 +34,27 @@ export default {
 </script>
 
 <style scoped>
+.white-key {
+    width: 2rem;
+    height: 10rem;
+    background: #fff;
+    border: 1px solid #000;
+    background: linear-gradient(#fff 97%, #ddd 3%);
+}
+.white-key:not(:first-child) {
+    border-left: none;
+}
+
+.black-key {
+    width: 1.5rem;
+    height: 7rem;
+    background: #000;
+    margin-left: -.75rem;
+    margin-right: -.75rem;
+    z-index: 1;
+    color: white;
+    background: linear-gradient(#000000, #333333);
+}
 .key {
     display: flex;
     justify-content: center;
@@ -44,26 +65,8 @@ export default {
     cursor: pointer;
 }
 
-.white-key {
-    position: relative;
-    width: 1.9rem;
-    height: 10rem;
-    background: linear-gradient(#fff 97%, #ddd 3%);
-    border-radius: 0 0 5px 5px;
-    border: 1px solid #000;
-}
 .white-key:active, .white-key.active {
     background: #ddd;
-}
-.white-key:not(:first-child) {
-}
-.black-key {
-    border: 1px solid #000;
-    background: linear-gradient(#000000, #333333);
-    height: 7rem;
-    color: white;
-    margin: -3rem -.7rem 0 -.7rem;
-    z-index: 1;
 }
 
 .black-key:active, .black-key.active{

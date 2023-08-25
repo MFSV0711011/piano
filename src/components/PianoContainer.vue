@@ -138,7 +138,6 @@ export default {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
     border-collapse: collapse;
     overflow: hidden;
     list-style: none;
