@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="{'white-key': !keyName.includes('b'), 'black-key': keyName.includes('b')}"
+        :class="{'white-key': !src.includes('b'), 'black-key': src.includes('b')}"
         class="key"
     >
         <span style="margin-bottom: 1rem;"> {{ keyName }} </span>
