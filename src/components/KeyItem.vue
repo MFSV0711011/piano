@@ -74,7 +74,5 @@ export default {
 .black-key:active, .black-key.active{
     background: linear-gradient(#333, #000);
 }
-/*.key:active, .key.active{*/
-/*    background: linear-gradient(#00ff00, #20be20);*/
-/*}*/
+
 </style>
