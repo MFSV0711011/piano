@@ -39,7 +39,8 @@ export default {
     height: 10rem;
     background: #fff;
     border: 1px solid #000;
-    background: linear-gradient(#fff 97%, #ddd 3%);
+    background: linear-gradient(#bbb, #fff 97%, #ddd 3%);
+    border-radius: 0 0 2px 2px;
 }
 .white-key:not(:first-child) {
     border-left: none;
@@ -54,6 +55,7 @@ export default {
     z-index: 1;
     color: white;
     background: linear-gradient(#000000, #333333);
+    border-radius: 0 0 2px 2px;
 }
 .key {
     display: flex;
@@ -72,4 +74,7 @@ export default {
 .black-key:active, .black-key.active{
     background: linear-gradient(#333, #000);
 }
+/*.key:active, .key.active{*/
+/*    background: linear-gradient(#00ff00, #20be20);*/
+/*}*/
 </style>

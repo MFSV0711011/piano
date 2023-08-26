@@ -117,6 +117,7 @@ export default {
                 {id: 85, name: 'A7', src: 'A7.mp3', keyCode: ''},
                 {id: 86, name: 'A#7', src: 'Bb7.mp3', keyCode: ''},
                 {id: 87, name: 'B7', src: 'B7.mp3', keyCode: ''},
+                {id: 88, name: 'C8', src: 'C8.mp3', keyCode: ''},
             ]
         }
     },
