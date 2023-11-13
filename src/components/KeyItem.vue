@@ -3,7 +3,7 @@
         :class="{'white-key': !src.includes('b'), 'black-key': src.includes('b')}"
         class="key"
     >
-        <span style="margin-bottom: 1rem;"> {{ keyName }} </span>
+        <span style="margin-bottom: .8rem;"> {{ keyName }} </span>
     </li>
 </template>
 

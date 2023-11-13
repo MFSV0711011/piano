@@ -1,23 +1,32 @@
 <template>
-    <ul class="piano-container" >
-
-
-                <KeyItem
-                    v-for="key of keys"
-                    :key="key.id"
-                    :class="{'white-td': !key.name.includes('b'), 'black-td': key.name.includes('b')}"
-                    :key-name="key.name"
-                    :note="key.name"
-                    :key-code="key.keyCode"
-                    :src="key.src"
-                    @mousedown="play(key.src)"
-                    ref="keyitem"
-                />
+    <div ref="notes-list" class="notes-list" style="margin-left: 500px;">
+        <audio 
+            v-for="note of keys" 
+            :key="note.id" 
+            :src="require(`@/assets/notes/${note.src}`)" 
+            :id="note.name"
+            :ref="note.name"
+            style="opacity: 0;"            
+        ></audio>
+    </div>
+    <ul class="piano-container">
+        <KeyItem
+            v-for="key of keys"
+            :key="key.id"
+            ref="keyitem"
+            :class="{'white-td': !key.name.includes('b'), 'black-td': key.name.includes('b')}"
+            :key-code="key.keyCode"
+            :key-name="key.name"
+            :note="key.name"
+            :src="key.src"
+            @mousedown="play(key.name)"
+        />
     </ul>
 </template>
 
 <script>
 import KeyItem from "@/components/KeyItem";
+
 export default {
     name: "PianoContainer",
     components: {
@@ -25,10 +34,6 @@ export default {
     },
     data() {
         return {
-            keyboard: {
-                a: 'C4',
-
-            },
             keys: [
                 {id: 1, name: 'A0', src: 'A0.mp3', keyCode: ''},
                 {id: 2, name: 'A#0', src: 'Bb0.mp3', keyCode: ''},
@@ -122,24 +127,34 @@ export default {
         }
     },
     computed: {
-      whiteKey() {
-          return  this.keys.filter(item => !item.name.includes('b'))
-      },
-      blackKey() {
-          return  this.keys.filter(item => item.name.includes('b'))
-      }
-    },
-    methods: {
-        play(src){
-            let note = new Audio(require('@/assets/notes/' + src));
-            note.play()
+        whiteKey() {
+            return this.keys.filter(item => !item.name.includes('b'))
+        },
+        blackKey() {
+            return this.keys.filter(item => item.name.includes('b'))
         }
     },
+    methods: {
+        play(src) {
+            document.getElementById(src).play()
+        },
+        loadMediaFiles() {
+            for (const note of this.keys) {
+              let file = require(`@/assets/notes/${note.src}`);
+              let element = document.createElement('audio');
+
+              element.src = file.src;
+              console.log(element);
+              this.$refs.notes-list.appendChild(element);
+            }
+          },
+    },
     mounted() {
+        this.loadMediaFiles()
         window.addEventListener('keydown', e => {
             console.log(e.key)
             this.$refs.keyitem.forEach(item => {
-                if(item.keyCode === e.key) {
+                if (item.keyCode === e.key) {
                     this.play(item.src)
                     item.$el.classList.add('active')
                 }
@@ -147,7 +162,7 @@ export default {
         })
         window.addEventListener('keyup', e => {
             this.$refs.keyitem.forEach(item => {
-                if(item.keyCode === e.key) {
+                if (item.keyCode === e.key) {
                     item.$el.classList.remove('active')
                 }
             })
